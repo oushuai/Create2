@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+.tr td{
+	background-color:rgb(102, 204, 255);
+	color:white;
+	font-weight:bold;
+}
+
+A
+{
+    FONT-SIZE: 15px;
+    text-decoration:none;
+    color: rgb(102, 204, 255);
+}
+a:hover{
+	color:rgb(12, 254, 255);
+	
+	text-decoration:none;
+}
+.table{
+	width:900px;
+	 align:center;
+	  border:0;
+}
+.table1{
+	 border=1px;
+	width=900px;
+	 align=center;
+	  
+	  cellspacing=0;
+}
+h1{
+	color:rgb(102, 204, 255);
+}
+.tr1{
+	
+	font-size:9pt;
+}
+.div{
+	align:left;
+	padding-left:50px;
+}
+.input{
+	color:white;
+	background-color: rgb(102, 204, 255);
+	border:0;
+	font-size:15px;	
+}
+

@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="create" extends="struts-default">
+		<interceptors>
+			<!-- 定义了一个名为loginFilter的拦截器 -->
+			<interceptor name="loginFilter" class="org.etspace.create.tool.LoginFilter"/>
+			<!-- 定义了一个名为authorityFilter的拦截器 -->
+			<interceptor name="authorityFilter" class="org.etspace.create.tool.AuthorityFilter"/>
+			<!-- 定义了一个名为authorityFilter1的拦截器 -->
+			<interceptor name="authorityFilter1" class="org.etspace.create.tool.AuthorityFilter1"/>
+		<interceptor name="authorityFilter2" class="org.etspace.create.tool.AuthorityFilter2"/>
+		<interceptor name="authorityFilter3" class="org.etspace.create.tool.AuthorityFilter3"/>
+		<interceptor name="authorityFilter4" class="org.etspace.create.tool.AuthorityFilter4"/>
+		<interceptor name="authorityFilter5" class="org.etspace.create.tool.AuthorityFilter5"/>
+		</interceptors>
+		<!-- 全局跳转，凡名为login结果的均跳转到login.jsp -->
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+		<action name="register" class="userAction" method="register">
+			<result name="success">/registerSuccess.jsp</result>
+			<result name="error">/registerError.jsp</result>
+			</action>
+		<action name="login" class="userAction" method="login">
+			<result name="success">/indexAdmin.jsp</result>
+			<result name="error">/login.jsp</result>
+			</action>
+			<action name="logout" class="userAction" method="logout">
+			<result name="success">/login.jsp</result>
+			</action>
+		<action name="userList" class="userAction" method="userList">
+			<result name="success">/userList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="userAddView" class="userAction" method="userAddView">
+			<result name="success">/userAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="userAdd" class="userAction" method="userAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="userDelete" class="userAction" method="userDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+			<action name="userUpdateView" class="userAction" method="userUpdateView">
+			<result name="success">/userUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="userUpdate" class="userAction" method="userUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="userForgetView" class="userAction" method="userForgetView">
+			<result name="success">/forget.jsp</result>
+			<result name="none">/noAuthority.jsp</result>			
+		</action>
+		<action name="userForget" class="userAction" method="userForget">
+			<result name="success">/forgetSuccess.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>			
+		</action>
+		<action name="userForgetValidateView" class="userAction" method="userForgetValidateView">
+			<result name="success">/forgetValidate.jsp</result>
+			<result name="none">/noAuthority.jsp</result>			
+		</action>
+		<action name="userForgetValidate" class="userAction" method="userForgetValidate">
+			<result name="success">/forget.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>			
+		</action>
+		<action name="userResetPwd" class="userAction" method="userResetPwd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="userSetPwdView" class="userAction" method="userSetPwdView">
+			<result name="success">/userSetPwdView.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			</action>			
+		<action name="userSetPwd" class="userAction" method="userSetPwd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+				</action>
+		<action name="pingweiinformationList1" class="pingweiinformationAction" method="pingweiinformationList1">
+			<result name="success">/pingweiinformationList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="pingweiinformationList" class="pingweiinformationAction" method="pingweiinformationList">
+			<result name="success">/pingweiinformationList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="pingweiinformationAddView" class="pingweiinformationAction" method="pingweiinformationAddView">
+			<result name="success">/pingweiinformationAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="pingweiinformationAdd" class="pingweiinformationAction" method="pingweiinformationAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="pingweiinformationDelete" class="pingweiinformationAction" method="pingweiinformationDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+			<action name="pingweiinformationUpdateView" class="pingweiinformationAction" method="pingweiinformationUpdateView">
+			<result name="success">/pingweiinformationUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="pingweiinformationUpdate" class="pingweiinformationAction" method="pingweiinformationUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="projectinformationList" class="projectinformationAction" method="projectinformationList">
+			<result name="success">/projectinformationList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="projectinformationList1" class="projectinformationAction" method="projectinformationList1">
+			<result name="success">/projectinformationList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformationAddView" class="projectinformationAction" method="projectinformationAddView">
+			<result name="success">/projectinformationAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformationAdd" class="projectinformationAction" method="projectinformationAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformationDelete" class="projectinformationAction" method="projectinformationDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+			<action name="projectinformationUpdateView" class="projectinformationAction" method="projectinformationUpdateView">
+			<result name="success">/projectinformationUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformationUpdate" class="projectinformationAction" method="projectinformationUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformation1List" class="projectinformation1Action" method="projectinformation1List">
+			<result name="success">/projectinformation1List.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="shenhe1" class="projectinformation1Action" method="shenhe1">
+			<result name="success">/shenhe1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="view1" class="projectinformation1Action" method="view1">
+			<result name="success">/view1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="view11" class="projectinformation1Action" method="view11">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="shenhe2" class="projectinformation1Action" method="shenhe2">
+			<result name="success">/shenhe2.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view2" class="projectinformation1Action" method="view2">
+			<result name="success">/view2.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view22" class="projectinformation1Action" method="view22">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="shenhe3" class="projectinformation1Action" method="shenhe3">
+			<result name="success">/shenhe3.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="view3" class="projectinformation1Action" method="view3">
+			<result name="success">/view3.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="view33" class="projectinformation1Action" method="view33">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="projectinformation1List1" class="projectinformation1Action" method="projectinformation1List1">
+			<result name="success">/projectinformation1List1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformation1AddView" class="projectinformation1Action" method="projectinformation1AddView">
+			<result name="success">/projectinformation1AddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformation1Add" class="projectinformation1Action" method="projectinformation1Add">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformation1Delete" class="projectinformation1Action" method="projectinformation1Delete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+			<action name="projectinformation1UpdateView" class="projectinformation1Action" method="projectinformation1UpdateView">
+			<result name="success">/projectinformation1UpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="projectinformation1Update" class="projectinformation1Action" method="projectinformation1Update">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="shenhe4" class="mediumAction" method="shenhe4">
+			<result name="success">/shenhe4.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view4" class="mediumAction" method="view4">
+			<result name="success">/view4.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view44" class="mediumAction" method="view44">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="mediumList1" class="mediumAction" method="mediumList1">
+			<result name="success">/mediumList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="mediumList" class="mediumAction" method="mediumList">
+			<result name="success">/mediumList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="mediumAddView" class="mediumAction" method="mediumAddView">
+			<result name="success">/mediumAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="mediumAdd" class="mediumAction" method="mediumAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="mediumDelete" class="mediumAction" method="mediumDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+			<action name="mediumUpdateView" class="mediumAction" method="mediumUpdateView">
+			<result name="success">/mediumUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="mediumUpdate" class="mediumAction" method="mediumUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="shenhe7" class="yanqiAction" method="shenhe7">
+			<result name="success">/shenhe7.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view7" class="yanqiAction" method="view7">
+			<result name="success">/view7.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view77" class="yanqiAction" method="view77">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="yanqiList1" class="yanqiAction" method="yanqiList1">
+			<result name="success">/yanqiList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="yanqiList" class="yanqiAction" method="yanqiList">
+			<result name="success">/yanqiList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="yanqiAddView" class="yanqiAction" method="yanqiAddView">
+			<result name="success">/yanqiAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="yanqiAdd" class="yanqiAction" method="yanqiAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="yanqiDelete" class="yanqiAction" method="yanqiDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+			<action name="yanqiUpdateView" class="yanqiAction" method="yanqiUpdateView">
+			<result name="success">/yanqiUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="yanqiUpdate" class="yanqiAction" method="yanqiUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="shenhe8" class="jiezhuanAction" method="shenhe8">
+			<result name="success">/shenhe8.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view8" class="jiezhuanAction" method="view8">
+			<result name="success">/view8.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view88" class="jiezhuanAction" method="view88">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="jiezhuanList1" class="jiezhuanAction" method="jiezhuanList1">
+			<result name="success">/jiezhuanList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter5"/>
+		</action>
+		<action name="jiezhuanList" class="jiezhuanAction" method="jiezhuanList">
+			<result name="success">/jiezhuanList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="jiezhuanAddView" class="jiezhuanAction" method="jiezhuanAddView">
+			<result name="success">/jiezhuanAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter5"/>
+		</action>
+		<action name="jiezhuanAdd" class="jiezhuanAction" method="jiezhuanAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter5"/>
+		</action>
+		<action name="jiezhuanDelete" class="jiezhuanAction" method="jiezhuanDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter5"/>
+		</action>
+			<action name="jiezhuanUpdateView" class="jiezhuanAction" method="jiezhuanUpdateView">
+			<result name="success">/jiezhuanUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter5"/>
+		</action>
+		<action name="jiezhuanUpdate" class="jiezhuanAction" method="jiezhuanUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter5"/>
+		</action>
+		<action name="shenhe9" class="tongjiAction" method="shenhe9">
+			<result name="success">/shenhe9.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view9" class="tongjiAction" method="view9">
+			<result name="success">/view9.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view99" class="tongjiAction" method="view99">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="tongjiList1" class="tongjiAction" method="tongjiList1">
+			<result name="success">/tongjiList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="tongjiList" class="tongjiAction" method="tongjiList">
+			<result name="success">/tongjiList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="tongjiAddView" class="tongjiAction" method="tongjiAddView">
+			<result name="success">/tongjiAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="tongjiAdd" class="tongjiAction" method="tongjiAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="tongjiDelete" class="tongjiAction" method="tongjiDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+			<action name="tongjiUpdateView" class="tongjiAction" method="tongjiUpdateView">
+			<result name="success">/tongjiUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="tongjiUpdate" class="tongjiAction" method="tongjiUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter4"/>
+		</action>
+		<action name="shenhe5" class="jietiAction" method="shenhe5">
+			<result name="success">/shenhe5.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="view5" class="jietiAction" method="view5">
+			<result name="success">/view5.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="view55" class="jietiAction" method="view55">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter1"/>
+		</action>
+		<action name="shenhe6" class="jietiAction" method="shenhe6">
+			<result name="success">/shenhe6.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view6" class="jietiAction" method="view6">
+			<result name="success">/view6.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="view66" class="jietiAction" method="view66">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter2"/>
+		</action>
+		<action name="jietiList1" class="jietiAction" method="jietiList1">
+			<result name="success">/jietiList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="jietiList" class="jietiAction" method="jietiList">
+			<result name="success">/jietiList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="jietiAddView" class="jietiAction" method="jietiAddView">
+			<result name="success">/jietiAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="jietiAdd" class="jietiAction" method="jietiAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="jietiDelete" class="jietiAction" method="jietiDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+			<action name="jietiUpdateView" class="jietiAction" method="jietiUpdateView">
+			<result name="success">/jietiUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="jietiUpdate" class="jietiAction" method="jietiUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter3"/>
+		</action>
+		<action name="teacherList" class="teacherAction" method="teacherList">
+			<result name="success">/teacherList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="teacherList1" class="teacherAction" method="teacherList1">
+			<result name="success">/teacherList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="teacherAddView" class="teacherAction" method="teacherAddView">
+			<result name="success">/teacherAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="teacherAdd" class="teacherAction" method="teacherAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="teacherDelete" class="teacherAction" method="teacherDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+			<action name="teacherUpdateView" class="teacherAction" method="teacherUpdateView">
+			<result name="success">/teacherUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="teacherUpdate" class="teacherAction" method="teacherUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="studentinformationList" class="studentinformationAction" method="studentinformationList">
+			<result name="success">/studentinformationList.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+		<action name="studentinformationList1" class="studentinformationAction" method="studentinformationList1">
+			<result name="success">/studentinformationList1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="studentinformationAddView" class="studentinformationAction" method="studentinformationAddView">
+			<result name="success">/studentinformationAddView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="studentinformationAdd" class="studentinformationAction" method="studentinformationAdd">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="studentinformationDelete" class="studentinformationAction" method="studentinformationDelete">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			<interceptor-ref name="authorityFilter"/>
+		</action>
+			<action name="studentinformationUpdateView" class="studentinformationAction" method="studentinformationUpdateView">
+			<result name="success">/studentinformationUpdateView.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+			
+		</action>
+		<action name="studentinformationUpdate" class="studentinformationAction" method="studentinformationUpdate">
+			<result name="success">/success1.jsp</result>
+			<result name="error">/error1.jsp</result>
+			<result name="none">/noAuthority.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="loginFilter"/>
+		
+		</action>
+    </package>
+   </struts>

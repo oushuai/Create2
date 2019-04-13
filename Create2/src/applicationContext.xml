@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+ <!-- 扫描org.etspace.create.service包下所有标注@Service的服务组件 -->
+    <context:component-scan base-package="org.etspace.create.service"/>
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+		value="com.mysql.jdbc.Driver">	
+	</property>	
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/create">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>org/etspace/create/vo/User.hbm.xml</value>
+				<value>org/etspace/create/vo/Teacher.hbm.xml</value>
+				<value>
+					org/etspace/create/vo/Studentinformation.hbm.xml
+				</value>
+				<value>
+					org/etspace/create/vo/Projectinformation.hbm.xml
+				</value>
+				<value>
+					org/etspace/create/vo/Pingweiinformation.hbm.xml
+				</value>
+				<value>
+					org/etspace/create/vo/Projectinformation1.hbm.xml
+				</value>
+				<value>org/etspace/create/vo/Medium.hbm.xml</value>
+				<value>org/etspace/create/vo/Jieti.hbm.xml</value>
+				<value>org/etspace/create/vo/Yanqi.hbm.xml</value>
+				<value>org/etspace/create/vo/Jiezhuan.hbm.xml</value>
+				<value>org/etspace/create/vo/Tongji.hbm.xml</value></list>
+		</property></bean>
+         <bean id="userDAO" class="org.etspace.create.dao.impl.UserDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="projectinformationDAO" class="org.etspace.create.dao.impl.ProjectinformationDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="projectinformation1DAO" class="org.etspace.create.dao.impl.Projectinformation1DAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="teacherDAO" class="org.etspace.create.dao.impl.TeacherDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="pingweiinformationDAO" class="org.etspace.create.dao.impl.PingweiinformationDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="studentinformationDAO" class="org.etspace.create.dao.impl.StudentinformationDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="mediumDAO" class="org.etspace.create.dao.impl.MediumDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="tongjiDAO" class="org.etspace.create.dao.impl.TongjiDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="jietiDAO" class="org.etspace.create.dao.impl.JietiDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="jiezhuanDAO" class="org.etspace.create.dao.impl.JiezhuanDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="yanqiDAO" class="org.etspace.create.dao.impl.YanqiDAO">
+	<property name="sessionFactory">
+	<ref bean="sessionFactory"></ref>
+	</property></bean>
+	<bean id="jietiService" class="org.etspace.create.service.impl.JietiService">
+	<property name="jietiDAO">
+	<ref bean="jietiDAO"></ref>
+	</property></bean>
+	<bean id="tongjiService" class="org.etspace.create.service.impl.TongjiService">
+	<property name="tongjiDAO">
+	<ref bean="tongjiDAO"></ref>
+	</property></bean>
+	<bean id="jiezhuanService" class="org.etspace.create.service.impl.JiezhuanService">
+	<property name="jiezhuanDAO">
+	<ref bean="jiezhuanDAO"></ref>
+	</property></bean>
+	<bean id="mediumService" class="org.etspace.create.service.impl.MediumService">
+	<property name="mediumDAO">
+	<ref bean="mediumDAO"></ref>
+	</property></bean>
+	<bean id="userService" class="org.etspace.create.service.impl.UserService">
+	<property name="userDAO">
+	<ref bean="userDAO"></ref>
+	</property></bean>
+	<bean id="projectinformationService" class="org.etspace.create.service.impl.ProjectinformationService">
+	<property name="projectinformationDAO">
+	<ref bean="projectinformationDAO"></ref>
+	</property></bean>
+	<bean id="projectinformation1Service" class="org.etspace.create.service.impl.Projectinformation1Service">
+	<property name="projectinformation1DAO">
+	<ref bean="projectinformation1DAO"></ref>
+	</property></bean>
+	<bean id="teacherService" class="org.etspace.create.service.impl.TeacherService">
+	<property name="teacherDAO">
+	<ref bean="teacherDAO"></ref>
+	</property></bean>
+	<bean id="pingweiinformationService" class="org.etspace.create.service.impl.PingweiinformationService">
+	<property name="pingweiinformationDAO">
+	<ref bean="pingweiinformationDAO"></ref>
+	</property></bean>
+	<bean id="studentinformationService" class="org.etspace.create.service.impl.StudentinformationService">
+	<property name="studentinformationDAO">
+	<ref bean="studentinformationDAO"></ref>
+	</property></bean>
+	<bean id="yanqiService" class="org.etspace.create.service.impl.YanqiService">
+	<property name="yanqiDAO">
+	<ref bean="yanqiDAO"></ref>
+	</property></bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 <bean id="userAction" class="org.etspace.create.action.UserAction" scope="prototype">
+		<property name="userService">
+			<ref bean="userService"></ref>
+		</property>		
+	</bean>
+	 <bean id="jietiAction" class="org.etspace.create.action.JietiAction" scope="prototype">
+		<property name="jietiService">
+			<ref bean="jietiService"></ref>
+		</property>		
+	</bean>
+	 <bean id="jiezhuanAction" class="org.etspace.create.action.JiezhuanAction" scope="prototype">
+		<property name="jiezhuanService">
+			<ref bean="jiezhuanService"></ref>
+		</property>		
+	</bean>
+	<bean id="yanqiAction" class="org.etspace.create.action.YanqiAction" scope="prototype">
+		<property name="yanqiService">
+			<ref bean="yanqiService"></ref>
+		</property>		
+	</bean>
+	 <bean id="mediumAction" class="org.etspace.create.action.MediumAction" scope="prototype">
+		<property name="mediumService">
+			<ref bean="mediumService"></ref>
+		</property>		
+	</bean>
+	 <bean id="tongjiAction" class="org.etspace.create.action.TongjiAction" scope="prototype">
+		<property name="tongjiService">
+			<ref bean="tongjiService"></ref>
+		</property>		
+	</bean>
+	<bean id="pingweiinformationAction" class="org.etspace.create.action.PingweiinformationAction" scope="prototype">
+		<property name="pingweiinformationService">
+			<ref bean="pingweiinformationService"></ref>
+		</property>		
+	</bean>
+	<bean id="projectinformationAction" class="org.etspace.create.action.ProjectinformationAction" scope="prototype">
+		<property name="projectinformationService">
+			<ref bean="projectinformationService"></ref>
+		</property>		
+	</bean>
+	<bean id="projectinformation1Action" class="org.etspace.create.action.Projectinformation1Action" scope="prototype">
+		<property name="projectinformation1Service">
+			<ref bean="projectinformation1Service"></ref>
+		</property>		
+	</bean>
+	<bean id="teacherAction" class="org.etspace.create.action.TeacherAction" scope="prototype">
+		<property name="teacherService">
+			<ref bean="teacherService"></ref>
+		</property>	
+</bean>
+		<bean id="studentinformationAction" class="org.etspace.create.action.StudentinformationAction" scope="prototype">
+		<property name="studentinformationService">
+			<ref bean="studentinformationService"></ref>
+		</property>			
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<tx:attributes>
+	 <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="count*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+            
+            <tx:method name="*" read-only="false" propagation="REQUIRED" />
+	  </tx:attributes>
+    </tx:advice>
+      <aop:config expose-proxy="true">
+        <aop:pointcut id="txPointcut" expression="execution(* org.etspace.create.service..*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+    </aop:config>
+    <aop:config expose-proxy="true">
+        <aop:pointcut id="txPointcut" expression="execution(* org.etspace.create.dao..*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+    </aop:config>
+</beans>

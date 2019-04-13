@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN"
+    "http://www.getahead.ltd.uk/dwr/dwr10.dtd">
+<dwr>
+	<allow>
+    	<create creator="spring" javascript="AjaxUserService">
+     		<param name="beanName" value="userService"/>
+     		<include method="exist"/>
+    	</create>
+    	<create creator="spring" javascript="AjaxUserService">
+     		<param name="beanName" value="userService"/>
+     		<include method="exist1"/>
+    	</create>
+    	<create creator="spring" javascript="AjaxPingweiinformationService">
+     		<param name="beanName" value="pingweiinformationService"/>
+     		<include method="exist"/>
+    	</create>
+    	<create creator="spring" javascript="AjaxProjectinformationService">
+     		<param name="beanName" value="projectinformationService"/>
+     		<include method="exist"/>
+    	</create>
+    	<create creator="spring" javascript="AjaxProjectinformation1Service">
+     		<param name="beanName" value="projectinformation1Service"/>
+     		<include method="exist"/>
+    	</create>
+    	<create creator="spring" javascript="AjaxTeacherService">
+     		<param name="beanName" value="teacherService"/>
+     		<include method="exist"/>
+    	</create>
+    	<create creator="spring" javascript="AjaxStudentinformationService">
+     		<param name="beanName" value="studentinformationService"/>
+     		<include method="exist"/>
+    	</create>
+  	</allow>
+</dwr>
+

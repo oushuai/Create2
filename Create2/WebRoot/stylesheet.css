@@ -1,0 +1,97 @@
+body
+{
+    font-size: 9pt;
+    font-family: ����;
+    color: rgb(102, 204, 255);
+    
+}
+A
+{
+    FONT-SIZE: 9pt;
+    
+    color: rgb(102, 204, 255);
+}
+A:link {
+    FONT-SIZE: 9pt;
+    TEXT-DECORATION: none;
+    color: blue;
+}
+A:visited {
+    FONT-SIZE: 9pt;
+    TEXT-DECORATION: none;
+     color: rgb(102, 204, 255);
+}
+A:active {
+    FONT-SIZE: 9pt;
+    TEXT-DECORATION: none;
+    color: blue;
+
+}
+A:hover {
+    COLOR: red;
+   
+}
+TABLE {
+    FONT-SIZE: 9pt
+}
+TR {
+    FONT-SIZE: 9pt
+}
+TD {
+    FONT-SIZE: 9pt;
+}
+.test-textarea {
+width: 400px;
+min-height: 26px;
+line-height: 20px;
+_height: 30px;
+/* max-height: 150px;*/
+margin-left: auto;
+margin-right: auto;
+padding: 3px;
+outline: 0;
+border: 1px solid #ccc;
+font-size: 12px;
+word-wrap: break-word;
+overflow-x: hidden;
+overflow-y: auto;
+-webkit-user-modify: read-write-plaintext-only;
+border-radius: 4px;
+}
+ #loginfont{
+ color:white;
+ text-align: center;
+ }
+#a:link{
+	font-size:15px;
+	color:white;
+}
+#a:visited {color:white;
+}
+#a:hover{
+	font-size:17px;
+	text-decoration:none;
+}
+#login:hover{
+	background-color:bule;
+	
+}
+#login{
+	color:white;
+	background-color: rgb(102, 204, 255);
+	border:0;
+}
+#register:hover{
+	background-color:rgb(12, 254, 255);
+}
+#register:link{
+	background-color:rgb(102, 204, 255);
+}
+#a1:hover{
+	color:rgb(12, 254, 255);
+	font-size:15px;
+}
+#a1:link{
+	color:rgb(102, 204, 255);
+}
+

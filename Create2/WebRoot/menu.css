@@ -1,0 +1,46 @@
+
+body{
+	*{margin: 0;padding: 0;}
+	overflow-y:hidden;
+	overflow-x:hidden;
+	background-color: rgb(102, 204, 255);
+	
+}
+     
+        nav ul li{list-style-type:none;padding-top:2px;}
+        nav ul li a{ text-decoration: none;display: block;width: 250px;line-height: 35px;
+                    color:white;font-fimily:微软雅黑;}
+        nav ul li ul li{float: none}
+        nav ul li ul li a{color:wheat}
+        nav ul li ul{display: none;}
+        nav ul li:hover ul{display: block;}
+        img{
+        	line-height:35px;padding-right:15px;float:left;height:30px;width:30px;
+        }
+        a:hover{
+        	background-color:rgb(12, 254, 255);
+        	width:350px;
+        	
+        }
+        .input{
+        width:120%;
+        text-align:left;
+        	background-color:rgb(102, 204, 255);
+        	line-height:35px;
+        	border:0;
+        	color:wheat;
+        	font-size:17px;
+        	font-fimily:微软雅黑;
+        	float:left;
+        	
+        	}
+        	.title{
+        	background-color:rgb(102, 204, 255);
+        	font-size:16px;
+        	font-fimily:微软雅黑;
+        	border:0;
+        	color:white;
+        	line-height:35px;
+        	
+        	}
+     
